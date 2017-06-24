@@ -1,0 +1,7 @@
+[user]
+	user = <USER>
+	name = <NAME>
+	email = <EMAIL>
+
+[credential]
+	helper = cache

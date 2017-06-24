@@ -1,0 +1,58 @@
+# Sample gitconfig
+#
+
+[include]
+	path=~/.gitconfig.local
+[alias]
+	co = checkout
+	wtf = !$DOTFILES/bin/git-wtf
+	rank-contributers = !$DOTFILES/bin/git-rank-contributers
+	count = !git shortlog -sn
+	unstage = reset HEAD
+	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+	up = push --follow-tags
+	clean-branches = "!git branch --merged | grep -vE '^(\\*|\\s*master\\s*$)' | xargs -n 1 git branch -d; git remote prune upstream"
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = auto
+[core]
+	excludesfile = ~/.gitignore
+	editor = vim
+	quotepath = off
+	pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less
+[apply]
+	whitespace = nowarn
+[mergetool]
+	keepBackup = false
+[difftool]
+	prompt = false
+[help]
+	autocorrect = 1
+[push]
+	# See `git help config` (search for push.default)
+	# for more information on different options of the below setting.
+	#
+	# 'current' works like 'simple' but the remote branch name does not need to be specified upon the first push (with -u origin)
+	default = current
+[i18n]
+	logoutputencoding = utf8
+	commitencoding = utf8
+
+[branch]
+	# see here for the following two options: http://stackoverflow.com/questions/5480069/autosetuprebase-vs-autosetupmerge/22147540#22147540
+	autosetuprebase = always
+	autosetupmerge = true
+[pull]
+	rebase = true
+
+[rerere]
+	enabled = true
+[rebase]
+	autosquash = true
+	autostash = true
+[interactive]
+	diffFilter = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight
+[diff]
+	compactionHeuristic = true
