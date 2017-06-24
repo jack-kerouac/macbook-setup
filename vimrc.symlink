@@ -1,0 +1,33 @@
+set ts=4
+set ruler
+
+set linebreak
+
+" Better searching.
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
+
+
+" move between screen (wrapped) lines (as opposed to physical lines) using the cursor keys
+noremap  <buffer> <silent> <Up>   gk
+noremap  <buffer> <silent> <Down> gj
+noremap  <buffer> <silent> <Home> g<Home>
+noremap  <buffer> <silent> <End>  g<End>
+
+inoremap <buffer> <silent> <Up>   <C-o>gk
+inoremap <buffer> <silent> <Down> <C-o>gj
+inoremap <buffer> <silent> <Home> <C-o>g<Home>
+inoremap <buffer> <silent> <End>  <C-o>g<End>
+
+
+" keep cursor in the middle of the screen
+set scrolloff=5
+
+
+syntax on
+
+" display line numbers
+set number
+
