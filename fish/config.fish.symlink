@@ -1,0 +1,3 @@
+# BOB THE FISH THEME (see more info here: https://github.com/oh-my-fish/theme-bobthefish)
+set -g theme_color_scheme solarized
+set -g theme_project_dir_length 1
