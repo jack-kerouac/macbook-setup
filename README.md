@@ -13,3 +13,21 @@
 
 TODOs:
 - look into [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle)
+
+Brew bundles:
+- awscli
+- bower
+- fish
+- git
+- gnu-sed
+- grunt-cli
+- httpie
+- hub
+- jq
+- macvim
+- nginx
+- python
+- python3
+- ssh-copy-id
+- tree
+- watch
