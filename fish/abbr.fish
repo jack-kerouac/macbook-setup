@@ -19,5 +19,6 @@ abbr grbc 'git rebase --continue'
 abbr gcp 'git cherry-pick'
 abbr grba 'git rebase --abort'
 abbr gcf 'git commit --fixup='
+abbr gclb 'git clean-branches'
 
 # end
