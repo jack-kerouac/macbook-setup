@@ -14,20 +14,36 @@
 TODOs:
 - look into [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle)
 
-Brew bundles:
+Brew bundles (`brew leaves`):
 - awscli
 - bower
+- crowdin
 - fish
 - git
 - gnu-sed
 - grunt-cli
 - httpie
 - hub
+- influxdb
 - jq
-- macvim
+- mysql@5.6
 - nginx
-- python
-- python3
+- openssl@1.1
+- pv
+- redis
 - ssh-copy-id
 - tree
 - watch
+
+Brew casks (`brew cask ls`):
+- docker
+- firefox
+- font-roboto-mono-for-powerline
+- intellij-idea
+- iterm2
+- java
+- ngrok
+- postman
+- sketchup
+- skitch
+- skype
