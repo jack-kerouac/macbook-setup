@@ -58,3 +58,5 @@
 	diffFilter = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight
 [diff]
 	compactionHeuristic = true
+[protocol]
+	version = 2
