@@ -42,7 +42,9 @@ Brew casks (`brew cask ls`):
 - intellij-idea
 - iterm2
 - java
+- java8
 - ngrok
+- portfolioperformance
 - postman
 - sketchup
 - skitch
