@@ -61,3 +61,6 @@
 	compactionHeuristic = true
 [protocol]
 	version = 2
+[user]
+	name = Florian Hertnagel
+	email = florian.hertnagel@tado.com
