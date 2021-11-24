@@ -4,7 +4,7 @@
 
 abbr gco 'git checkout'
 abbr gst 'git status'
-abbr gpr 'hub pull-request'
+abbr gpr 'gh pr create'
 abbr gb 'git branch'
 abbr grb 'git rebase'
 abbr grbi 'git rebase --interactive'
