@@ -1,4 +1,4 @@
-#!/usr/local/bin/fish
+#!/opt/homebrew/bin/fish
 
 # create/change this file with abbr --show >> abbr.fish
 
