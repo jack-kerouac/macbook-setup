@@ -67,8 +67,8 @@ Brew bundles (`brew leaves`):
 - wget
 
 Brew casks (`brew cask ls`):
-- adoptopenjdk8
-- adoptopenjdk11
+- temurin8 (successor of AdoptOpenJDK)
+- temurin11 (successor of AdoptOpenJDK)
 - banking-4
 - calibre
 - docker
