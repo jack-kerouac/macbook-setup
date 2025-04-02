@@ -20,6 +20,8 @@
 	status = auto
 	branch = auto
 	ui = auto
+[column]
+	ui = auto
 [core]
 	excludesfile = ~/.gitignore
 	editor = vim
@@ -39,6 +41,8 @@
 	#
 	# 'current' works like 'simple' but the remote branch name does not need to be specified upon the first push (with -u origin)
 	default = current
+    autoSetupRemote = true
+    followTags = true
 [i18n]
 	logoutputencoding = utf8
 	commitencoding = utf8
@@ -47,6 +51,9 @@
 	# see here for the following two options: http://stackoverflow.com/questions/5480069/autosetuprebase-vs-autosetupmerge/22147540#22147540
 	autosetuprebase = always
 	autosetupmerge = true
+    sort = -committerdate
+[tag]
+	sort = version:refname
 [pull]
 	rebase = true
 
@@ -55,10 +62,19 @@
 [rebase]
 	autosquash = true
 	autostash = true
+	updateRefs = true
 [interactive]
 	diffFilter = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight
 [diff]
 	compactionHeuristic = true
+    algorithm = histogram
+    colorMoved = plain
+	renames = true
+	mnemonicPrefix = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
 [protocol]
 	version = 2
 [user]
