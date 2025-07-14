@@ -4,6 +4,8 @@ set -g theme_project_dir_length 1
 
 set -x LC_ALL en_US.UTF-8
 
+set -gx GPG_TTY (tty)
+
 abbr -a -- gcm 'git checkout master'
 abbr -a -- gd 'git diff'
 abbr -a -- ga 'git add'
