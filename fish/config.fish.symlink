@@ -29,5 +29,6 @@ if status is-interactive
     abbr -a -- gcpa 'git cherry-pick --abort'
     abbr -a -- gcpc 'git cherry-pick --continue'
     abbr -a -- gpr 'gh pr create'
+    abbr -a -- gclb 'git clean-branches'
 end
 
