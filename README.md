@@ -9,6 +9,8 @@
 - Adjust mouse tracking speed
 - Adjust keyboard repeat rate to fastest
 - Change resolution of second display
+- Disable Siri and Apple Intelligence
+- Add quad4 DNS servers through [adding profile](https://docs.quad9.net/Setup_Guides/MacOS/Big_Sur_and_later_%28Encrypted%29/), then check on https://on.quad9.net/.
 
 ## Homebrew
 - Install homebrew
