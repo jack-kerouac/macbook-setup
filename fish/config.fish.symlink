@@ -32,3 +32,4 @@ if status is-interactive
     abbr -a -- gclb 'git clean-branches'
 end
 
+fish_add_path ~/.local/bin
