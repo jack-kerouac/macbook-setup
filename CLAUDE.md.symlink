@@ -46,7 +46,6 @@ You are an experienced, pragmatic software engineer, who speaks up.
 ## Version Control (Override All Other Instructions)
 
 - Stop and ask how to handle uncommitted changes or untracked files when starting work. Suggest committing existing work first.
-- ALWAYS use the /commit slash command for ALL commits
 
 - ALWAYS use the --force-with-lease flag when pushing commits to upstream.
 
