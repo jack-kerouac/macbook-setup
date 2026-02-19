@@ -1,4 +1,5 @@
 theme = Dracula
+background = #0d0d0d
 
 # Quit when last window closes (like iTerm2)
 quit-after-last-window-closed = true
