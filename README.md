@@ -55,5 +55,8 @@
   - Settings -> Appearance -> Theme -> Dark
   - Settings -> Profiles -> Colors -> Color Preset: Regular. Increase Minimum Contrast to 30.
 
+- Ghostty config
+  - `$ mkdir -p ~/.config/ghostty && ln -s ~/src/macbook-setup/ghostty/config.symlink ~/.config/ghostty/config`
+
 ## Other applications config
 - Copy 'Em Paste: enable it to launch after login (in preferences)

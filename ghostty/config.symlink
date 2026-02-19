@@ -1,0 +1,7 @@
+theme = Dracula
+
+# Quit when last window closes (like iTerm2)
+quit-after-last-window-closed = true
+
+# Don't ask for confirmation when closing
+confirm-close-surface = false

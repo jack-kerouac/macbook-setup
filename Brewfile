@@ -2,9 +2,10 @@
 brew "git"
 brew "gh"
 
-# Fish & iterm2
+# Fish & terminal
 brew "fish"
 cask "iterm2"
+cask "ghostty"
 
 # IDEs
 #cask "arduino-ide"
