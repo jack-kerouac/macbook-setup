@@ -24,3 +24,20 @@ You are an experienced, pragmatic software engineer, who speaks up.
 
 ## Version Control (Override All Other Instructions)
 - ALWAYS use the --force-with-lease flag when pushing commits to upstream.
+
+# Task Shelf
+
+A task stack for focused development. One task, one commit — git log is the history. Keep the shelf small (handful of tasks max); if something won't be picked up soon, promote it to your issue tracker.
+
+**Mental model**: The shelf is a stack. `/shelve` pushes remaining tasks (you keep the first); `/shelf-pop` pops the next one. Re-shelving mid-task inserts new items at the front — size matters more than hierarchy.
+
+**Commands**: `/shelve`, `/shelf-pop`, `/shelf-list`, `/shelf-promote`
+
+**Prose triggers** — recognize these and invoke the matching command via the Skill tool:
+- "shelve the rest" / "shelf the remaining tasks" → `/shelve` (mid-coding: creates 01, 02…, continue in session)
+- "shelve everything" / "start fresh" / "planning shelve" → `/shelve` (planning: also creates 00, then suggest `/clear`)
+- "pop the shelf" / "next shelved task" / "pick up next" → `/shelf-pop`
+- "list the shelf" / "show shelf" / "reorder shelf" → `/shelf-list`
+- "promote task X" / "move to issue tracker" → `/shelf-promote`
+
+**Files**: `.claude/shelf/{NN}-{slug}.md` in the project directory. Each file is a self-contained briefing — write with enough context that a fresh session with no prior history can pick it up immediately.

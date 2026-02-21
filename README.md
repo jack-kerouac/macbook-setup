@@ -58,5 +58,21 @@
 - Ghostty config
   - `$ mkdir -p ~/.config/ghostty && ln -s ~/src/macbook-setup/ghostty/config.symlink ~/.config/ghostty/config`
 
+## Claude Code
+
+### Task shelf commands
+```bash
+mkdir -p ~/.claude/commands
+ln -s ~/src/macbook-setup/claude/commands/shelve.md ~/.claude/commands/shelve.md
+ln -s ~/src/macbook-setup/claude/commands/shelf-pop.md ~/.claude/commands/shelf-pop.md
+ln -s ~/src/macbook-setup/claude/commands/shelf-list.md ~/.claude/commands/shelf-list.md
+ln -s ~/src/macbook-setup/claude/commands/shelf-promote.md ~/.claude/commands/shelf-promote.md
+```
+
+### Global CLAUDE.md
+```bash
+ln -s ~/src/macbook-setup/CLAUDE.md.symlink ~/.claude/CLAUDE.md
+```
+
 ## Other applications config
 - Copy 'Em Paste: enable it to launch after login (in preferences)
