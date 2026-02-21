@@ -30,9 +30,9 @@ Present the remaining tasks in your proposed priority order with a one-line rati
 
 - In mid-coding mode: new files start at `01`.
 - In planning mode: new files start at `00`.
-- If `.claude/shelf/` already has numbered files (re-shelve / splitting mid-task): insert new tasks at the front. Rename existing files to make room — if inserting N new tasks, rename existing `0X-slug.md` to `0(X+N)-slug.md`. In planning mode, also delete any existing `00-*` file (replaced by the new current task).
+- If `.claude/shelf/` already has numbered files (re-shelve / splitting mid-task): insert new tasks at the front. Rename existing files to make room — sort existing files by number, then renumber them sequentially starting at `start + N` (where `start` is the new first slot and N is the count of new tasks). Example: inserting 3 tasks starting at 01 with existing [03, 04] → rename 03 → 04, 04 → 05 (not 06, 07). In planning mode, also delete any existing `00-*` file (replaced by the new current task).
 
-Use temporary names during renaming to avoid conflicts (e.g. rename to `tmp-0X-slug.md` first, then to final names).
+Rename in reverse sorted order (highest number first) to avoid overwriting files mid-sequence.
 
 **Step 4: Create shelf files**
 
