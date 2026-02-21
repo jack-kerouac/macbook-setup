@@ -48,7 +48,7 @@ Each file must be a **complete briefing for a fresh Claude session with zero pri
 # {Task title}
 
 **Shelved**: {datetime}
-**Predecessor**: {what must be done before this — the task that comes immediately before}
+**Requires**: {What the preceding task delivers that this task builds on — omit if this is the first task or has no dependencies}
 
 ## Summary
 {1–2 sentences: what needs to be done and why}
@@ -58,9 +58,6 @@ Each file must be a **complete briefing for a fresh Claude session with zero pri
 
 ## Task
 {Concrete description of what to implement or change}
-
-## Dependencies
-{What the predecessor delivers that this task builds on}
 ```
 
 **Step 5: Confirm**
