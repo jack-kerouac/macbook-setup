@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(git status:*), Bash(git log:*), Bash(ls:*), Bash(rm:*), Read
+allowed-tools: Bash(git status:*), Bash(git log:*), Bash(git show:*), Bash(ls:*), Bash(rm:*), Read
 description: Pop the top task off the shelf and load its context
 ---
 
@@ -27,9 +27,9 @@ If no files exist: "The shelf is empty — you're all done!" and stop.
 
 Read the file fully. Then delete it with `rm`.
 
-**Step 4: Show recent commits**
+**Step 4: Review recent commits for context**
 
-Run `git log --oneline -5` and show the output so the user has context on what was accomplished before this task.
+Run `git log --oneline -10` to see recent commits. Read the task file (already loaded in step 3) to understand what the task is about, then for any commits whose message appears related to the current task, run `git show <hash>` to read the full commit message and diff. Summarize what was done in those relevant commits so the user has concrete context before diving in. Skip unrelated commits.
 
 **Step 5: Present task**
 
