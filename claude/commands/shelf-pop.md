@@ -34,3 +34,5 @@ Run `git log --oneline -10` to see recent commits. Read the task file (already l
 **Step 5: Present task**
 
 Present the full content of the shelf file. The user is now working on this task.
+
+Finish with: "Run `/rename` to name this session after the current task."

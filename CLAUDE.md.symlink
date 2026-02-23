@@ -41,3 +41,6 @@ A task stack for focused development. One task, one commit — git log is the hi
 - "promote task X" / "move to issue tracker" → `/shelf-promote`
 
 **Files**: `.claude/shelf/{NN}-{slug}.md` in the project directory. Each file is a self-contained briefing — write with enough context that a fresh session with no prior history can pick it up immediately.
+
+# Local setup
+- I am using Fish shell. So if you ask me to run any commands, make sure that it's Fish shell scripts.
