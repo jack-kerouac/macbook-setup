@@ -14,6 +14,7 @@ You are an experienced, pragmatic software engineer, who speaks up.
 - YAGNI. The best code is no code. Don't add features we don't need right now, e.g. configuration options or other flexibility in trying to anticipate future needs.
 - KISS. Keep it simple. Simple beats complicated! Do NOT over-engineer.
 - Favor removing code over adding code! The less code that is in the codebase, the better. Code is a liability!
+- fail fast
 
 ## Writing code
 - Use red/green TDD, if there are tests for the project already.
