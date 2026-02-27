@@ -29,7 +29,7 @@ Read the file fully. Then delete it with `rm`.
 
 **Step 4: Review recent commits for context**
 
-Run `git log --oneline -10` to see recent commits. Read the task file (already loaded in step 3) to understand what the task is about, then for any commits whose message appears related to the current task, run `git show <hash>` to read the full commit message and diff. Summarize what was done in those relevant commits so the user has concrete context before diving in. Skip unrelated commits.
+Extract the `**Shelved**: {datetime}` value from the shelf file (format: `YYYY-MM-DD HH:MM`). Run `git log --oneline -10 --before="{datetime}"` to see the 10 commits that existed when the task was shelved. Read the task file (already loaded in step 3) to understand what the task is about, then for any commits whose message appears related to the current task, run `git show <hash>` to read the full commit message and diff. Summarize what was done in those relevant commits so the user has concrete context before diving in. Skip unrelated commits.
 
 **Step 5: Present task**
 
