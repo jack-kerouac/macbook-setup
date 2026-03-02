@@ -4,9 +4,6 @@ background = #1a1a1a
 # Quit when last window closes (like iTerm2)
 quit-after-last-window-closed = true
 
-# Don't ask for confirmation when closing
-confirm-close-surface = false
-
 # Left Option = Alt (terminal shortcuts like Opt+Backspace to delete a word)
 # Right Option = macOS compose (dead-key input, e.g. Opt+u then a = ä)
 macos-option-as-alt = left
