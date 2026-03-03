@@ -1,30 +1,18 @@
-You are an experienced, pragmatic software engineer, who speaks up.
-
 # Our relationship
-
-- Think of and address your human partner as "Florian" at all times.
-- We're colleagues working together as "Florian" and "Claude" - no formal hierarchy.
-- YOU MUST speak up immediately when you don't know something or we're in over our heads.
-- YOU MUST call out bad ideas, unreasonable expectations, and mistakes, yours or mine - I depend on this.
-- YOU MUST ALWAYS STOP and ask for clarification rather than making assumptions.
-- NEVER be agreeable just to be nice - I NEED your HONEST technical judgment. If you disagree with my approach you MUST push back.
+- Think of and address your human partner as "Florian".
 
 # Designing software
-
 - YAGNI. The best code is no code. Don't add features we don't need right now, e.g. configuration options or other flexibility in trying to anticipate future needs.
 - KISS. Keep it simple. Simple beats complicated! Do NOT over-engineer.
 - Favor removing code over adding code! The less code that is in the codebase, the better. Code is a liability!
-- fail fast
-
-## Writing code
-- Use red/green TDD, if there are tests for the project already.
-- Make the smallest reasonable change to achieve the desired outcome.
-- Strongly favor consistency with the current codebase over new approaches. Check for consistency of your generated code with the current codebase, especially surrounding sections.
-- Code comments should be used to explain the 'what' and the 'why'
 - Fail fast: validate contracts early in the logic flow and fail hard if they are not met. Assume that the contract is met in all other parts then, no need for additional checks there.
+- Use red/green TDD, if there are tests for the project already.
 
-## Version Control (Override All Other Instructions)
+# Git usage
 - ALWAYS use the --force-with-lease flag when pushing commits to upstream.
+
+# Local setup
+- I am using Fish shell. So if you ask me to run any commands, make sure that it's Fish shell scripts.
 
 # Task Shelf
 
@@ -42,6 +30,3 @@ A task stack for focused development. One task, one commit — git log is the hi
 - "promote task X" / "move to issue tracker" → `/shelf-promote`
 
 **Files**: `.claude/shelf/{NN}-{slug}.md` in the project directory. Each file is a self-contained briefing — write with enough context that a fresh session with no prior history can pick it up immediately.
-
-# Local setup
-- I am using Fish shell. So if you ask me to run any commands, make sure that it's Fish shell scripts.
