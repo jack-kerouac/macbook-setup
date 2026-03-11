@@ -66,7 +66,6 @@ mkdir -p ~/.claude/commands
 ln -s ~/src/macbook-setup/claude/commands/shelve.md ~/.claude/commands/shelve.md
 ln -s ~/src/macbook-setup/claude/commands/shelf-pop.md ~/.claude/commands/shelf-pop.md
 ln -s ~/src/macbook-setup/claude/commands/shelf-list.md ~/.claude/commands/shelf-list.md
-ln -s ~/src/macbook-setup/claude/commands/shelf-promote.md ~/.claude/commands/shelf-promote.md
 ```
 
 ### Global CLAUDE.md
