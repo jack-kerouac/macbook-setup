@@ -1,11 +1,9 @@
 {
   "env": {
-    "CLAUDE_CODE_SHELL": "bash",
-    "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "0"
+    "CLAUDE_CODE_SHELL": "bash"
   },
   "permissions": {
     "allow": [
-      "Edit(/Users/florianhertnagel/.cache/uv/**)",
       "mcp__context7__resolve-library-id",
       "mcp__context7__query-docs",
       "WebSearch"
@@ -25,9 +23,23 @@
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
+    "allowUnsandboxedCommands": true,
+    "excludedCommands": ["docker"],
     "network": {
-      "allowLocalBinding": true
-    }
+      "allowLocalBinding": true,
+      "allowUnixSockets": [
+        "~/.gnupg/S.gpg-agent",
+        "~/.gnupg/S.keyboxd"
+      ]
+    },
+    "filesystem": {
+      "allowWrite": [
+        "~/Library/Caches/go-build/",
+        "~/.cache/uv",
+        "~/.gnupg/public-keys.d"
+      ]
+    },
+    "enableWeakerNetworkIsolation": true
   },
   "alwaysThinkingEnabled": true,
   "model": "opus"
