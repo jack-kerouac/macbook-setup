@@ -14,6 +14,9 @@
 # Local setup
 - I am using Fish shell. So if you ask me to run any shell commands myself, make sure that it's Fish shell scripts.
 
+# Browser automation
+- If you need to interact with a web page, use the 'rodney' CLI tool. Run `uvx rodney --help` to familiarize with the tool.
+
 # Task Shelf
 
 A task stack for focused development. One task, one commit — git log is the history. Keep the shelf small (handful of tasks max); if something won't be picked up soon, promote it to your issue tracker.
