@@ -44,5 +44,6 @@
     "enableWeakerNetworkIsolation": true
   },
   "alwaysThinkingEnabled": true,
+  "tui": "fullscreen",
   "model": "opus"
 }
