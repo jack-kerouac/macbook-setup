@@ -76,8 +76,13 @@ else
   rate_str=""
 fi
 
-# 5. Prompt cache eviction countdown (60 min from last assistant message)
+# 5. Prompt cache eviction countdown (TTL from last assistant message)
 # Cache the last-seen assistant timestamp in a tmpfile to avoid re-scanning on every refresh
+if [ -n "${ENABLE_PROMPT_CACHING_1H}" ]; then
+  cache_ttl=3600; cache_label="cache (60m)"
+else
+  cache_ttl=300;  cache_label="cache (5m)"
+fi
 cache_str=""
 if [ -n "$transcript" ] && [ -f "$transcript" ]; then
   cache_file="/tmp/ccstatusline_$(echo "$transcript" | md5).ts"
@@ -105,13 +110,13 @@ if [ -n "$transcript" ] && [ -f "$transcript" ]; then
   fi
   if [ -n "$cached_epoch" ]; then
     now=$(date +%s)
-    evict_at=$((cached_epoch + 3600))
+    evict_at=$((cached_epoch + cache_ttl))
     remaining=$((evict_at - now))
     if [ "$remaining" -gt 0 ]; then
       mins=$((remaining / 60))
-      cache_str="cache: ${mins}m"
+      cache_str="${cache_label}: ${mins}m"
     else
-      cache_str="cache: \033[31;1mexpired\033[0m"
+      cache_str="${cache_label}: \033[31;1mexpired\033[0m"
     fi
   fi
 fi
