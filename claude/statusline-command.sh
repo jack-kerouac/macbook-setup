@@ -93,8 +93,13 @@ if [ -n "$transcript" ] && [ -f "$transcript" ]; then
       ts_clean="${ts_clean%Z}"
       ts_epoch=$(TZ=UTC date -j -f "%Y-%m-%dT%H:%M:%S" "$ts_clean" +%s 2>/dev/null)
       if [ -n "$ts_epoch" ]; then
-        echo "${transcript_size}:${ts_epoch}" > "$cache_file"
-        cached_epoch="$ts_epoch"
+        # Only advance the epoch on a genuinely newer assistant message.
+        # If the file grew for other reasons (streaming, tool output), keep the
+        # old epoch so the countdown continues instead of resetting to 60m.
+        if [ "$ts_epoch" -gt "${cached_epoch:-0}" ]; then
+          cached_epoch="$ts_epoch"
+        fi
+        echo "${transcript_size}:${cached_epoch}" > "$cache_file"
       fi
     fi
   fi
