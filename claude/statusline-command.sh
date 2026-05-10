@@ -85,7 +85,9 @@ else
 fi
 cache_str=""
 if [ -n "$transcript" ] && [ -f "$transcript" ]; then
-  cache_file="/tmp/ccstatusline_$(echo "$transcript" | md5).ts"
+  _cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/claude/statusline"
+  mkdir -p "$_cache_dir"
+  cache_file="${_cache_dir}/$(echo "$transcript" | md5).ts"
   # Only re-scan if transcript has grown since last check
   transcript_size=$(stat -f%z "$transcript" 2>/dev/null)
   cached_meta=$(cat "$cache_file" 2>/dev/null)
