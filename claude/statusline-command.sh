@@ -115,7 +115,8 @@ if [ -n "$transcript" ] && [ -f "$transcript" ]; then
     remaining=$((evict_at - now))
     if [ "$remaining" -gt 0 ]; then
       mins=$((remaining / 60))
-      cache_str="${cache_label}: ${mins}m"
+      secs=$((remaining % 60))
+      cache_str="${cache_label}: ${mins}m ${secs}s"
     else
       cache_str="${cache_label}: \033[31;1mexpired\033[0m"
     fi
