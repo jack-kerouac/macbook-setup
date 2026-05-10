@@ -11,10 +11,8 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "npx -y ccstatusline@latest",
-    "padding": 0,
-    "refreshInterval": 10
-
+    "command": "bash ~/.claude/statusline-command.sh",
+    "refreshIntervalMs": 10000
   },
   "enabledPlugins": {
     "superpowers@superpowers-marketplace": false,
