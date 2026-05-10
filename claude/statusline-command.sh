@@ -4,8 +4,9 @@
 
 input=$(cat)
 
-# Extract all fields in one jq pass
-mapfile -t _f < <(echo "$input" | jq -r '
+# Extract all fields in one jq pass (bash 3.2-compatible — no mapfile)
+_f=()
+while IFS= read -r line; do _f+=("$line"); done < <(echo "$input" | jq -r '
   (.model.display_name // "unknown"),
   (.effort.level // ""),
   (.context_window.total_input_tokens // 0 | tostring),
