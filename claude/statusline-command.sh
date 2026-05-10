@@ -40,10 +40,9 @@ else
   ctx_str="ctx: ${tokens_fmt} tok"
 fi
 
-# 3. Current working directory (below ~/src/) and git branch
-src_prefix="$HOME/src/"
-if [[ "$cwd" == "$src_prefix"* ]]; then
-  rel_cwd="${cwd#$src_prefix}"
+# 3. Current working directory (relative to home) and git branch
+if [[ "$cwd" == "$HOME"* ]]; then
+  rel_cwd="~${cwd#$HOME}"
 else
   rel_cwd="$cwd"
 fi
