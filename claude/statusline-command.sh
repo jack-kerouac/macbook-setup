@@ -33,11 +33,11 @@ else
 fi
 
 # 2. Context tokens and percentage
-tokens_fmt=$(printf "%'d" "$total_tokens" 2>/dev/null || echo "$total_tokens")
+tokens_fmt=$(awk "BEGIN { printf \"%.1fk\", $total_tokens / 1000 }")
 if [ -n "$used_pct" ]; then
-  ctx_str="ctx: ${tokens_fmt} tok ($(printf '%.0f' "$used_pct")%)"
+  ctx_str="ctx: ${tokens_fmt} ($(printf '%.0f' "$used_pct")%)"
 else
-  ctx_str="ctx: ${tokens_fmt} tok"
+  ctx_str="ctx: ${tokens_fmt}"
 fi
 
 # 3. Current working directory (relative to home) and git branch
@@ -48,7 +48,7 @@ else
 fi
 branch=$(git --no-optional-locks -C "$cwd" branch --show-current 2>/dev/null)
 if [ -n "$branch" ]; then
-  dir_str="${rel_cwd} (${branch})"
+  dir_str="${rel_cwd} (⎇ ${branch})"
 else
   dir_str="${rel_cwd}"
 fi

@@ -24,7 +24,7 @@
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
     "allowUnsandboxedCommands": true,
-    "excludedCommands": ["docker"],
+    "excludedCommands": ["docker", "uv"],
     "network": {
       "allowLocalBinding": true,
       "allowUnixSockets": [
@@ -36,7 +36,10 @@
       "allowWrite": [
         "~/Library/Caches/go-build/",
         "~/.cache/uv",
-        "~/.gnupg/public-keys.d"
+        "~/.gnupg"
+      ],
+      "denyWrite": [
+        "~/.gnupg/private-keys-v1.d/"
       ]
     },
     "enableWeakerNetworkIsolation": true
