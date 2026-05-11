@@ -14,7 +14,8 @@ while IFS= read -r line; do _f+=("$line"); done < <(echo "$input" | jq -r '
   (.rate_limits.five_hour.used_percentage // ""),
   (.rate_limits.five_hour.resets_at // "" | tostring),
   (.workspace.current_dir // .cwd // ""),
-  (.transcript_path // "")
+  (.transcript_path // ""),
+  (.cost.total_cost_usd // "" | tostring)
 ')
 model="${_f[0]}"
 effort="${_f[1]}"
@@ -24,6 +25,7 @@ five_pct="${_f[4]}"
 five_resets="${_f[5]}"
 cwd="${_f[6]}"
 transcript="${_f[7]}"
+cost_usd="${_f[8]}"
 
 # 1. Model and effort level
 if [ -n "$effort" ]; then
@@ -71,6 +73,8 @@ if [ -n "$five_pct" ] && [ -n "$five_resets" ]; then
   rate_str="5h session: $(printf '%.0f' "$five_pct")% ($remaining_str)"
 elif [ -n "$five_pct" ]; then
   rate_str="5h session: $(printf '%.0f' "$five_pct")%"
+elif [ -n "$cost_usd" ]; then
+  rate_str="cost: $(printf '$%.2f' "$cost_usd")"
 else
   rate_str=""
 fi
@@ -132,7 +136,7 @@ C_DIR='\033[38;5;183m'      # light lavender      — working dir/branch
 C_CACHE='\033[38;5;152m'    # light cyan-grey     — cache eviction
 C_SEP='\033[38;5;240m'      # dim grey            — separator
 
-# Assemble: model | ctx | cwd/branch | 5h session | cache
+# Assemble: model | ctx | cwd/branch | 5h session (or API cost) | cache
 colored_parts=()
 colored_parts+=("${C_MODEL}${model_str}${C_RESET}")
 colored_parts+=("${C_CTX}${ctx_str}${C_RESET}")
