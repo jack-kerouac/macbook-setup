@@ -136,13 +136,13 @@ C_DIR='\033[38;5;183m'      # light lavender      — working dir/branch
 C_CACHE='\033[38;5;152m'    # light cyan-grey     — cache eviction
 C_SEP='\033[38;5;240m'      # dim grey            — separator
 
-# Assemble: model | ctx | cwd/branch | 5h session (or API cost) | cache
+# Assemble: model | cwd/branch | ctx | cache | cost
 colored_parts=()
 colored_parts+=("${C_MODEL}${model_str}${C_RESET}")
-colored_parts+=("${C_CTX}${ctx_str}${C_RESET}")
 colored_parts+=("${C_DIR}${dir_str}${C_RESET}")
-[ -n "$rate_str" ] && colored_parts+=("${C_RATE}${rate_str}${C_RESET}")
+colored_parts+=("${C_CTX}${ctx_str}${C_RESET}")
 [ -n "$cache_str" ] && colored_parts+=("${C_CACHE}${cache_str}${C_RESET}")
+[ -n "$rate_str" ] && colored_parts+=("${C_RATE}${rate_str}${C_RESET}")
 
 # Join with separator
 printf '%b' "${colored_parts[0]}"
