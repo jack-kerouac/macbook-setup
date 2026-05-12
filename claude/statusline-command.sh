@@ -15,7 +15,9 @@ while IFS= read -r line; do _f+=("$line"); done < <(echo "$input" | jq -r '
   (.rate_limits.five_hour.resets_at // "" | tostring),
   (.workspace.current_dir // .cwd // ""),
   (.transcript_path // ""),
-  (.cost.total_cost_usd // "" | tostring)
+  (.cost.total_cost_usd // "" | tostring),
+  (.worktree.branch // ""),
+  (.worktree.original_cwd // "")
 ')
 model="${_f[0]}"
 effort="${_f[1]}"
@@ -26,6 +28,8 @@ five_resets="${_f[5]}"
 cwd="${_f[6]}"
 transcript="${_f[7]}"
 cost_usd="${_f[8]}"
+wt_branch="${_f[9]}"
+wt_original_cwd="${_f[10]}"
 
 # 1. Model and effort level
 if [ -n "$effort" ]; then
@@ -43,16 +47,12 @@ else
 fi
 
 # 3. Current working directory (relative to home) and git branch
-if [[ "$cwd" == "$HOME"* ]]; then
-  rel_cwd="~${cwd#$HOME}"
+rel_path() { local p="$1"; [[ "$p" == "$HOME"* ]] && printf '~%s' "${p#$HOME}" || printf '%s' "$p"; }
+if [ -n "$wt_original_cwd" ]; then
+  dir_str="$(rel_path "$wt_original_cwd") (worktree: ⎇ ${wt_branch})"
 else
-  rel_cwd="$cwd"
-fi
-branch=$(git --no-optional-locks -C "$cwd" branch --show-current 2>/dev/null)
-if [ -n "$branch" ]; then
-  dir_str="${rel_cwd} (⎇ ${branch})"
-else
-  dir_str="${rel_cwd}"
+  branch=$(git --no-optional-locks -C "$cwd" branch --show-current 2>/dev/null)
+  dir_str="$(rel_path "$cwd")${branch:+ (⎇ ${branch})}"
 fi
 
 # 4. 5h subscription session usage and reset time
