@@ -43,6 +43,9 @@
 
 ## Fish shell and iterm2
 - Symlink fish config from macbook-setup: `$ ln -s ~/src/macbook-setup/fish/config.fish.symlink ~/.config/fish/config.fish`
+- Set up local secrets (not tracked in git): copy the template and fill in real values
+  - `$ cp ~/src/macbook-setup/fish/secrets.fish.example ~/.config/fish/conf.d/secrets.fish`
+  - `$ $EDITOR ~/.config/fish/conf.d/secrets.fish` and add `set -gx` lines for each secret the tools you use need (e.g. the Slack MCP agent reads `SLACK_MCP_XOXP_TOKEN`)
 - Change login shell to fish (https://fishshell.com/docs/current/)
   - `$ echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells`
   - `$ chsh -s /opt/homebrew/bin/fish`
