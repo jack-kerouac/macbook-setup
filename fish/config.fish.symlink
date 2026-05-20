@@ -48,7 +48,3 @@ end
 if not contains $_asdf_shims $PATH
     set -gx --prepend PATH $_asdf_shims
 end
-
-
-# Entire CLI shell completion
-entire completion fish | source
