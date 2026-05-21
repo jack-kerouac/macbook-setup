@@ -18,13 +18,17 @@
     "superpowers@superpowers-marketplace": false,
     "code-simplifier@claude-plugins-official": false,
     "frontend-design@claude-plugins-official": false,
-    "commit-commands@claude-plugins-official": true
+    "commit-commands@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true
   },
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
     "allowUnsandboxedCommands": true,
-    "excludedCommands": ["docker", "uv"],
+    "excludedCommands": [
+      "docker *",
+      "uv *"
+    ],
     "network": {
       "allowLocalBinding": true,
       "allowUnixSockets": [
@@ -45,6 +49,7 @@
     "enableWeakerNetworkIsolation": true
   },
   "alwaysThinkingEnabled": true,
+  "showClearContextOnPlanAccept": true,
   "tui": "fullscreen",
   "model": "opus"
 }
