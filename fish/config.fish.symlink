@@ -7,9 +7,6 @@ if status is-interactive
     fish_config theme choose Dracula
 	fish_config prompt choose informative_vcs
 
-	test -e /Users/florianhertnagel/.iterm2_shell_integration.fish ; and source /Users/florianhertnagel/.iterm2_shell_integration.fish ; or true
-
-
     abbr -a -- gcm 'git checkout main'
     abbr -a -- gd 'git diff'
     abbr -a -- ga 'git add'
