@@ -61,6 +61,21 @@
 - Ghostty config
   - `$ mkdir -p ~/.config/ghostty && ln -s ~/src/macbook-setup/ghostty/config.symlink ~/.config/ghostty/config`
 
+## AWS (awsume)
+
+`awscli` and `awsume` are installed via `brew bundle`. The fish alias that makes awsume work
+(`alias awsume="source (command -v awsume.fish)"`) lives in the symlinked `config.fish`, so no
+extra shell configuration is needed — awsume **must be sourced**, not executed, so it can export
+the credentials into the current shell.
+
+Credentials and profiles in `~/.aws/` are **not** tracked here (they contain secrets). On a fresh
+machine, recreate them manually:
+- `~/.aws/credentials` — the long-lived IAM user keys (the `default` source profile + any MFA user)
+- `~/.aws/config` — the role profiles that awsume assumes (`role_arn`, `source_profile`, `mfa_serial`, `region`)
+
+Usage: `awsume <profile>` (e.g. `awsume dev`); `awsume -l` lists profiles; `awsume -u` unsets the
+session. Roles with `mfa_serial` will prompt for an MFA token.
+
 ## Claude Code
 
 ### Task shelf commands

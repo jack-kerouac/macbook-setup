@@ -7,6 +7,10 @@ brew "fish"
 cask "iterm2"
 cask "ghostty"
 
+# AWS
+brew "awscli"
+brew "awsume"
+
 # IDEs
 #cask "arduino-ide"
 #cask "visual-studio-code"

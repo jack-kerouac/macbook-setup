@@ -45,3 +45,7 @@ end
 if not contains $_asdf_shims $PATH
     set -gx --prepend PATH $_asdf_shims
 end
+
+
+# awsume must be *sourced* (not executed) so it can export AWS creds into the current shell
+alias awsume="source (command -v awsume.fish)"
