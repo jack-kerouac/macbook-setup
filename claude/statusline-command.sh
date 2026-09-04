@@ -14,10 +14,12 @@ while IFS= read -r line; do _f+=("$line"); done < <(echo "$input" | jq -r '
   (.rate_limits.five_hour.used_percentage // ""),
   (.rate_limits.five_hour.resets_at // "" | tostring),
   (.workspace.current_dir // .cwd // ""),
-  (.transcript_path // ""),
   (.cost.total_cost_usd // "" | tostring),
   (.worktree.branch // ""),
-  (.worktree.original_cwd // "")
+  (.worktree.original_cwd // ""),
+  (.prompt_cache.ttl // ""),
+  (.prompt_cache.expires_at // "" | tostring),
+  (.prompt_cache.warm | tostring)
 ')
 model="${_f[0]}"
 effort="${_f[1]}"
@@ -26,10 +28,12 @@ used_pct="${_f[3]}"
 five_pct="${_f[4]}"
 five_resets="${_f[5]}"
 cwd="${_f[6]}"
-transcript="${_f[7]}"
-cost_usd="${_f[8]}"
-wt_branch="${_f[9]}"
-wt_original_cwd="${_f[10]}"
+cost_usd="${_f[7]}"
+wt_branch="${_f[8]}"
+wt_original_cwd="${_f[9]}"
+cache_ttl="${_f[10]}"
+cache_expires="${_f[11]}"
+cache_warm="${_f[12]}"
 
 # 1. Model and effort level
 if [ -n "$effort" ]; then
@@ -79,51 +83,16 @@ else
   rate_str=""
 fi
 
-# 5. Prompt cache eviction countdown (TTL from last assistant message)
-# Cache the last-seen assistant timestamp in a tmpfile to avoid re-scanning on every refresh
-if [ -n "${ENABLE_PROMPT_CACHING_1H}" ]; then
-  cache_ttl=3600; cache_label="cache (60m)"
-else
-  cache_ttl=300;  cache_label="cache (5m)"
-fi
+# 5. Prompt cache eviction countdown (Claude Code reports TTL and expiry)
 cache_str=""
-if [ -n "$transcript" ] && [ -f "$transcript" ]; then
-  _cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/claude/statusline"
-  mkdir -p "$_cache_dir"
-  cache_file="${_cache_dir}/$(echo "$transcript" | md5).ts"
-  # Only re-scan if transcript has grown since last check
-  transcript_size=$(stat -f%z "$transcript" 2>/dev/null)
-  cached_meta=$(cat "$cache_file" 2>/dev/null)
-  cached_size="${cached_meta%%:*}"
-  cached_epoch="${cached_meta##*:}"
-  if [ "$transcript_size" != "$cached_size" ]; then
-    last_ts=$(tail -n 100 "$transcript" | grep '"type":"assistant"' | tail -n 1 | sed 's/.*"timestamp":"\([^"]*\)".*/\1/')
-    if [ -n "$last_ts" ]; then
-      ts_clean="${last_ts%%.*}"
-      ts_clean="${ts_clean%Z}"
-      ts_epoch=$(TZ=UTC date -j -f "%Y-%m-%dT%H:%M:%S" "$ts_clean" +%s 2>/dev/null)
-      if [ -n "$ts_epoch" ]; then
-        # Only advance the epoch on a genuinely newer assistant message.
-        # If the file grew for other reasons (streaming, tool output), keep the
-        # old epoch so the countdown continues instead of resetting to 60m.
-        if [ "$ts_epoch" -gt "${cached_epoch:-0}" ]; then
-          cached_epoch="$ts_epoch"
-        fi
-        echo "${transcript_size}:${cached_epoch}" > "$cache_file"
-      fi
-    fi
-  fi
-  if [ -n "$cached_epoch" ]; then
-    now=$(date +%s)
-    evict_at=$((cached_epoch + cache_ttl))
-    remaining=$((evict_at - now))
-    if [ "$remaining" -gt 0 ]; then
-      mins=$((remaining / 60))
-      secs=$((remaining % 60))
-      cache_str="${cache_label}: ${mins}m ${secs}s"
-    else
-      cache_str="${cache_label}: \033[31;1mexpired\033[0m"
-    fi
+if [ -n "$cache_ttl" ]; then
+  cache_label="cache (${cache_ttl})"
+  remaining=0
+  [ -n "$cache_expires" ] && remaining=$(( cache_expires - $(date +%s) ))
+  if [ "$cache_warm" = "true" ] && [ "$remaining" -gt 0 ]; then
+    cache_str="${cache_label}: $((remaining / 60))m $((remaining % 60))s"
+  else
+    cache_str="${cache_label}: \033[31;1mexpired\033[0m"
   fi
 fi
 
