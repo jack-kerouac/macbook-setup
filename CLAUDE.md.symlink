@@ -9,10 +9,16 @@
 - Use red/green TDD, if there are tests for the project already.
 
 # Git usage
-- ALWAYS use the --force-with-lease flag when pushing commits to upstream.
+- use the --force-with-lease flag when pushing commits to upstream.
+
+# Subagent delegation
+- Frequently use your judgement to pick an appropriate lower power model and run that in a subagent.
 
 # Local setup
 - I am using Fish shell. So if you ask me to run any shell commands myself, make sure that it's Fish shell scripts.
 
 # Browser automation
 - If you need to interact with a web page, use the 'rodney' CLI tool. Run `uvx rodney --help` to familiarize with the tool.
+
+# Soft-wrapping text
+- Do not hard-wrap at a certain column for text documents you create, no matter whether files, commit messages, or Github PR descriptions.
