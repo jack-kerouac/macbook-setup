@@ -22,6 +22,20 @@
     "commit-commands@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true
   },
+  "extraKnownMarketplaces": {
+    "claude-obsidian-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "AgriciDaniel/claude-obsidian"
+      }
+    },
+    "jack-kerouac": {
+      "source": {
+        "source": "github",
+        "repo": "jack-kerouac/claude-code-task-shelf-plugin"
+      }
+    }
+  },
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
