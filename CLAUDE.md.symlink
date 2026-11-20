@@ -8,11 +8,13 @@
 - Fail fast: validate contracts early in the logic flow and fail hard if they are not met. Assume that the contract is met in all other parts then, no need for additional checks there.
 - Use red/green TDD, if there are tests for the project already.
 
-# Git usage
-- use the --force-with-lease flag when pushing commits to upstream.
+# Git & GitHub usage
+- When opening a GitHub PR, add a comment to document the session: Include the model, harness version, effort level, every user prompt verbatim, and a very brief summary of what happened in between user prompts. At the end, include a very quick assessment of how the session went and where we took a wrong turn.
+- Favor fixing up / amending previous commits on open PRs over just appending more.
+- When pushing to an open PR, check whether the PR description needs an update.
 
 # Subagent delegation
-- Frequently use your judgement to pick an appropriate lower power model and run that in a subagent.
+- Frequently use your judgment to pick an appropriate lower power model and run that in a subagent.
 
 # Local setup
 - I am using Fish shell. So if you ask me to run any shell commands myself, make sure that it's Fish shell scripts.
@@ -21,4 +23,4 @@
 - If you need to interact with a web page, use the 'rodney' CLI tool. Run `uvx rodney --help` to familiarize with the tool.
 
 # Soft-wrapping text
-- Do not hard-wrap at a certain column for text documents you create, no matter whether files, commit messages, or Github PR descriptions.
+- Do not hard-wrap at a certain column for text documents you create, no matter whether files, commit messages, or GitHub PR descriptions. When modifying parts of a hard-wrapped file, stay with hard-wrapping.
