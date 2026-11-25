@@ -19,7 +19,8 @@ while IFS= read -r line; do _f+=("$line"); done < <(echo "$input" | jq -r '
   (.worktree.original_cwd // ""),
   (.prompt_cache.ttl // ""),
   (.prompt_cache.expires_at // "" | tostring),
-  (.prompt_cache.warm | tostring)
+  (.prompt_cache.warm | tostring),
+  (.context_window.context_window_size // 0 | tostring)
 ')
 model="${_f[0]}"
 effort="${_f[1]}"
@@ -34,13 +35,12 @@ wt_original_cwd="${_f[9]}"
 cache_ttl="${_f[10]}"
 cache_expires="${_f[11]}"
 cache_warm="${_f[12]}"
+ctx_size="${_f[13]}"
 
-# 1. Model and effort level
-if [ -n "$effort" ]; then
-  model_str="$model [$effort]"
-else
-  model_str="$model"
-fi
+# 1. Model, context window size and effort level
+model_str="$model"
+[ "$ctx_size" -gt 0 ] && model_str+=" ($(awk "BEGIN { s = $ctx_size; if (s >= 1000000) printf \"%gM\", s / 1000000; else printf \"%gk\", s / 1000 }"))"
+[ -n "$effort" ] && model_str+=" [$effort]"
 
 # 2. Context tokens and percentage
 tokens_fmt=$(awk "BEGIN { printf \"%.1fk\", $total_tokens / 1000 }")
